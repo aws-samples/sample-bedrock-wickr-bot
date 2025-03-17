@@ -1,11 +1,17 @@
 # The AWS account ID where resources will be deployed
 account: "xxxxxxxxxxxx"
+
 # The AWS region where resources will be deployed
 region: "us-east-1"
+
 # Flag to indicate if this is a development environment
+# This will disable VPC flow logs, allow remote access to ECS containers for debugging, and 
+# set the retention policy on infrastructure resources to DESTROY for easy clean up
 isDevelopmentEnv: true
+
 # (optional) ID of an existing VPC to use for ECS Fargate
-# delete this if you want a new VPC to be created automatically
+# Delete this if you want a new VPC to be created automatically
 vpcId: 'xxxxxxxxxxxxxxxxxxxxx'
+
 # The ARN of the AWS Secrets Manager Secret containing the bot username and password
 credentialsArn: 'xxxxxxxxxxxxxxxxxxxxx'
