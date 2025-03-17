@@ -1,0 +1,10 @@
+{
+  "uid": "bedrock-bot",
+  "append": true,
+  "watch": false,
+  "script": "./index.js",
+  "sourceDir": "/opt/WickrIO/clients/my-bot/integration/bedrock-bot/",
+  "logFile": "./log.output",
+  "outFile": "./outfile.output",
+  "errFile": "./err.output"
+}

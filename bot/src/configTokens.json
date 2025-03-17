@@ -1,0 +1,6 @@
+{
+    "supportAdministrators":false,
+    "supportVerification":false,
+    "integration":"bedrock-bot",
+    "tokens" : []
+}
