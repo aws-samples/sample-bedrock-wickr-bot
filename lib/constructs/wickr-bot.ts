@@ -1,3 +1,4 @@
+import { Arn, Stack } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { DockerImageAsset } from "aws-cdk-lib/aws-ecr-assets";
 import {
@@ -32,6 +33,8 @@ export class WickrBot extends Construct {
   constructor(scope: Construct, id: string, props: WickrBotProps) {
     super(scope, id);
 
+    const stack = Stack.of(this);
+
     const image = new DockerImageAsset(this, "WickrBotImage", {
       directory: join(solutionRootDir, "bot"),
     });
@@ -52,7 +55,17 @@ export class WickrBot extends Construct {
             new PolicyStatement({
               effect: Effect.ALLOW,
               actions: ["bedrock:InvokeModel"],
-              resources: ["arn:aws:bedrock:*::foundation-model/*"],
+              resources: [
+                Arn.format(
+                  {
+                    service: "bedrock",
+                    resource: "foundation-model",
+                    resourceName: "*",
+                    partition: stack.partition,
+                  },
+                  stack
+                ),
+              ],
             }),
           ],
         }),
